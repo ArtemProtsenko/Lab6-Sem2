@@ -1,13 +1,9 @@
-import java.util.Scanner;
-
-public class SweetThingy {
+public class SweetThingy { // Батьківський клас.
     private final String type;
     private final String name;
     private final int chocolatePercentage;
     private final int price;
     private final double weight;
-
-    static Scanner scanner = new Scanner(System.in);
 
     public SweetThingy(String type, String name, int chocolatePercentage, int price, double weight){
         this.type = type;
@@ -19,7 +15,7 @@ public class SweetThingy {
 
     public String getType() {
         return type;
-    }
+    } // Геттери.
 
     public String getName() {
         return name;
@@ -37,7 +33,7 @@ public class SweetThingy {
         return weight;
     }
 
-    public static void printSweetThingy(SweetThingy sweetThingy){
+    public static void printSweetThingy(SweetThingy sweetThingy){ // Виведення всієї інформації про конкретний продукт.
         System.out.println("Тип: " + sweetThingy.getType() + "; Назва: " + sweetThingy.getName() + "; Відсоток шоколаду: " + sweetThingy.getChocolatePercentage() + "%; Ціна за кілограм: " + sweetThingy.getPrice() + "грн/кг; Вага: " + sweetThingy.getWeight() + "кг.");
     }
 }

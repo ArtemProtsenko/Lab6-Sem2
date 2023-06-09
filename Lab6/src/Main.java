@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    static boolean isSortingValue(String value){
+    static boolean isSortingValue(String value){ // Булеан для перевірки чи є змінна величиною за якою може відбуватися сортування.
         return value.toLowerCase().contains("type") || value.toLowerCase().contains("name") || value.toLowerCase().contains("chocolate percentage") || value.toLowerCase().contains("price") || value.toLowerCase().contains("weight");
     }
 
@@ -16,7 +16,7 @@ public class Main {
         List<SweetThingy> partySweets = new ArrayList<>();
         Comparator<SweetThingy> comparator;
 
-        partySweets.add(new Candie("Рафаелло", 0, 400, 0.25));
+        partySweets.add(new Candie("Рафаелло", 0, 400, 0.25)); // Заповнення ліста солодощів для подарунку.
         partySweets.add(new Candie("Ліщинка", 23, 150, 0.4));
         partySweets.add(new Cake("Київський", 40, 300, 2));
         partySweets.add(new Cookie("Есмеральда", 30, 200, 0.3));
@@ -27,25 +27,25 @@ public class Main {
 
         double weight = 0;
         for (SweetThingy sweetThingy : partySweets) {
-            weight += sweetThingy.getWeight();
+            weight += sweetThingy.getWeight(); // Знаходження маси подарунку.
         }
 
-        System.out.println("Вага подарунку: " + weight);
+        System.out.println("Вага подарунку: " + weight); // Виведення маси подарунку.
 
         String sortingValue = "";
         while (!isSortingValue(sortingValue)){
-            System.out.print("Введіть поле за яким відбудеться сортування: ");
+            System.out.print("Введіть поле за яким відбудеться сортування: "); // Введення поля за яким буде відбуватися сортування.
             sortingValue = scanner.next();
         }
 
         String wayOfSorting = "";
         while (!wayOfSorting.contains("asc") && !wayOfSorting.contains("desc")){
-            System.out.print("Введіть напрямок за яким відбудеться сортування: ");
+            System.out.print("Введіть напрямок за яким відбудеться сортування: "); // Введення напрямку сортування.
             wayOfSorting = scanner.next();
         }
 
 
-        if(sortingValue.contains("type")){
+        if(sortingValue.contains("type")){ // Заповнення компаратору. Те за яким полем буде відбуватися сортування.
             comparator = Comparator.comparing(SweetThingy::getType);
         }
         else if(sortingValue.contains("name")){
@@ -61,18 +61,18 @@ public class Main {
             comparator = Comparator.comparingDouble(SweetThingy::getWeight);
         }
 
-        if(wayOfSorting.contains("desc")){
+        if(wayOfSorting.contains("desc")){ // Напрямок сортування.
             comparator.reversed();
         }
 
-        partySweets.sort(comparator);
+        partySweets.sort(comparator); // Сортування.
 
-        for (SweetThingy sweetThingy : partySweets){
+        for (SweetThingy sweetThingy : partySweets){ // Виведення відсортованого ліста.
             SweetThingy.printSweetThingy(sweetThingy);
         }
 
         int minRange;
-        System.out.print("Введіть меншу границю відсотку шоколаду: ");
+        System.out.print("Введіть меншу границю відсотку шоколаду: "); // Введення границі відсотку шоколаду для знаходження відповідних солодощів.
         minRange = scanner.nextInt();
 
         int maxRange;
@@ -82,8 +82,8 @@ public class Main {
         System.out.println("Солодощі, які входять в вибрані межі: ");
 
         for (SweetThingy sweetThingy : partySweets){
-            if (sweetThingy.getChocolatePercentage() >= minRange && sweetThingy.getChocolatePercentage() <= maxRange){
-                SweetThingy.printSweetThingy(sweetThingy);
+            if (sweetThingy.getChocolatePercentage() >= minRange && sweetThingy.getChocolatePercentage() <= maxRange){ // Перевірка чи відсоток шоколаду входить в задані межі.
+                SweetThingy.printSweetThingy(sweetThingy); // Виведення знайдених солодощів.
             }
         }
     }
